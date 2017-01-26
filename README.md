@@ -39,7 +39,8 @@ or as a dependency in your app wide AppAsset.php
 // @app/assets/AppAsset.php
 
 public $depends = [
-    'exocet\BootstrapMD\MaterialAsset',
+    'exocet\BootstrapMD\MaterialAsset', // include css and js
+    'exocet\BootstrapMD\MaterialIconsAsset' // include icons
     // more dependencies
 ];
 ```
@@ -67,7 +68,8 @@ $config['modules']['gii'] = [
         'crud' => [
             'class' => 'yii\gii\generators\crud\Generator',
             'templates' => [ // setting templates
-                'material-desing' => '@vendor/exocet/yii2-bootstrap-material-design/generators/crud', 
+                'material-desing' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design/crud', 
+                'material-design-with-icons' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-with-icons/crud'
             ]
         ]
     ],

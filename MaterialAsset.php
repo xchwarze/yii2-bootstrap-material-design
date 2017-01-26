@@ -16,7 +16,6 @@ class MaterialAsset extends \yii\web\AssetBundle
 	];
 	public $depends = [
 		'yii\web\JqueryAsset',
-		'yii\bootstrap\BootstrapAsset',
-		'exocet\BootstrapMD\IconsAsset'
+		'yii\bootstrap\BootstrapAsset'
 	];
 }

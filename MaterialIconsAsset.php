@@ -3,7 +3,7 @@
 namespace exocet\BootstrapMD;
 
 
-class IconsAsset extends \yii\web\AssetBundle
+class MaterialIconsAsset extends \yii\web\AssetBundle
 {
     public $sourcePath = '@vendor/mervick/material-design-icons';
     public $css = [
