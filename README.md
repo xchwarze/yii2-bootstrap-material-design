@@ -29,7 +29,9 @@ Two ways to achieve this is to register the asset in the main layout:
 ```php
 // @app/views/layouts/main.php
 
-\exocet\BootstrapMD\MaterialAsset::register($this);
+\exocet\BootstrapMD\MaterialAsset::register($this); // include css and js
+\exocet\BootstrapMD\MaterialIconsAsset::register($this); // include icons (optional)
+\exocet\BootstrapMD\MaterialInitAsset::register($this); // add $.material.init(); js (optional)
 // further code
 ```
 
@@ -40,7 +42,8 @@ or as a dependency in your app wide AppAsset.php
 
 public $depends = [
     'exocet\BootstrapMD\MaterialAsset', // include css and js
-    'exocet\BootstrapMD\MaterialIconsAsset' // include icons
+    'exocet\BootstrapMD\MaterialIconsAsset', // include icons (optional)
+    'exocet\BootstrapMD\MaterialInitAsset', // add $.material.init(); js (optional)
     // more dependencies
 ];
 ```
@@ -68,8 +71,10 @@ $config['modules']['gii'] = [
         'crud' => [
             'class' => 'yii\gii\generators\crud\Generator',
             'templates' => [ // setting templates
-                'material-desing' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design/crud', 
-                'material-design-with-icons' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-with-icons/crud'
+                'material-desing' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design/crud',
+                'material-desing-h' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-h/crud', 
+                'material-design-with-icons' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-with-icons/crud',
+                'material-design-h-with-icons' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-h-with-icons/crud'
             ]
         ]
     ],
