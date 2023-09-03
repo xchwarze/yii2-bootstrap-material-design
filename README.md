@@ -29,9 +29,9 @@ Two ways to achieve this is to register the asset in the main layout:
 ```php
 // @app/views/layouts/main.php
 
-\exocet\BootstrapMD\MaterialAsset::register($this); // include css and js
-\exocet\BootstrapMD\MaterialIconsAsset::register($this); // include icons (optional)
-\exocet\BootstrapMD\MaterialInitAsset::register($this); // add $.material.init(); js (optional)
+\exocet\bootstrap5md\MaterialAsset::register($this); // include css and js
+\exocet\bootstrap5md\MaterialIconsAsset::register($this); // include icons (optional)
+\exocet\bootstrap5md\MaterialInitAsset::register($this); // add $.material.init(); js (optional)
 // further code
 ```
 
@@ -41,9 +41,9 @@ or as a dependency in your app wide AppAsset.php
 // @app/assets/AppAsset.php
 
 public $depends = [
-    'exocet\BootstrapMD\MaterialAsset', // include css and js
-    'exocet\BootstrapMD\MaterialIconsAsset', // include icons (optional)
-    'exocet\BootstrapMD\MaterialInitAsset', // add $.material.init(); js (optional)
+    'exocet\bootstrap5md\MaterialAsset', // include css and js
+    'exocet\bootstrap5md\MaterialIconsAsset', // include icons (optional)
+    'exocet\bootstrap5md\MaterialInitAsset', // add $.material.init(); js (optional)
     // more dependencies
 ];
 ```
