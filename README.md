@@ -1,29 +1,16 @@
 # yii2-bootstrap-material-design
 
-Composer package for implementing FezVrasta's bootstrap material design in Yii2
-https://github.com/FezVrasta/bootstrap-material-design
+Composer package for implementing FezVrasta's new bootstrap material design in Yii2
+https://github.com/mdbootstrap/mdb-ui-kit
 
 
 ## Installation
 
 The preferred way of installation is through Composer.
-If you don't have Composer you can get it here: https://getcomposer.org/
-
-You also should install the Composer Asset Plugin to handle NPM and Bower assets:
-```
-$ composer global require "fxp/composer-asset-plugin:~1.2"
-```
-
-To install the package add the following to the ```require``` section of your composer.json:
-```
-"require": {
-    "exocet/yii2-bootstrap-material-design": "*"
-},
-```
 
 ## Usage
 
-To load the Materialize CSS files integrate the MaterializeAsset into your app.
+To load the MDB CSS files integrate the MaterialAsset into your app.
 Two ways to achieve this is to register the asset in the main layout:
 
 ```php
@@ -31,7 +18,6 @@ Two ways to achieve this is to register the asset in the main layout:
 
 \exocet\bootstrap5md\MaterialAsset::register($this); // include css and js
 \exocet\bootstrap5md\MaterialIconsAsset::register($this); // include icons (optional)
-\exocet\bootstrap5md\MaterialInitAsset::register($this); // add $.material.init(); js (optional)
 // further code
 ```
 
@@ -43,7 +29,6 @@ or as a dependency in your app wide AppAsset.php
 public $depends = [
     'exocet\bootstrap5md\MaterialAsset', // include css and js
     'exocet\bootstrap5md\MaterialIconsAsset', // include icons (optional)
-    'exocet\bootstrap5md\MaterialInitAsset', // add $.material.init(); js (optional)
     // more dependencies
 ];
 ```
