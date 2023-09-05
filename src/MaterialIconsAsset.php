@@ -2,7 +2,6 @@
 
 namespace exocet\bootstrap5md;
 
-
 class MaterialIconsAsset extends \yii\web\AssetBundle
 {
     /**
