@@ -8,7 +8,7 @@ https://github.com/mdbootstrap/mdb-ui-kit
 
 The preferred way of installation is through Composer.
 ```bash
-composer install exocet/yii2-bootstrap-material-design
+composer require exocet/yii2-bootstrap-material-design
 ```
 
 
