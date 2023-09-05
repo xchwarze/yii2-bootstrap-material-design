@@ -2,6 +2,7 @@
 
 namespace exocet\bootstrap5md\widgets\form;
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /**
@@ -11,94 +12,80 @@ use yii\helpers\Html;
  * @package widgets
  * @subpackage form
  */
-class ActiveField extends \yii\bootstrap\ActiveField
+class ActiveField extends \yii\bootstrap5\ActiveField
 {
     /**
-     * @var ActiveForm the form that this field is associated with.
+     * @inheritDoc
      */
-    public $form;
-    public $options = ['class' => 'form-group form-group-lg form-control-wrapper'];
-    public $template = '{label}{input}<span class="material-input"></span>{error}{hint}';
-
-
-    public function label($label = null, $options = [])
-    {
-        if ($label === false) {
-            $this->parts['{label}'] = '';
-            return $this;
-        }
-
-        $label = isset($options['label']) 
-            ? $options['label']
-            : Html::encode($this->model->getAttributeLabel($this->attribute));
-        if ($this->form->layout == ActiveForm::LAYOUT_FLOATING) {
-            if (isset($this->options['class'])) {
-                $this->options['class'] .= ' label-floating';
-            }
-        }
-
-        if (is_bool($label)) {
-            $this->enableLabel = $label;
-            if ($label === false && $this->form->layout == ActiveForm::LAYOUT_HORIZONTAL) {
-                Html::addCssClass($this->wrapperOptions, $this->horizontalCssClasses['offset']);
-            }
-        } else {
-            $this->enableLabel = true;
-            $this->renderLabelParts($label, $options);
-            parent::label($label, $options);
-        }
-        
-        return $this;
-    }
-
-    public function checkbox($options = [], $enclosedByLabel = true)
-    {
-        $options['template'] = "<div class=\"checkbox\">\n{beginLabel}\n{input}\n<span class=\"checkbox-material\"></span>{labelTitle}\n{endLabel}\n{error}\n{hint}\n</div>";
-        return parent::checkbox($options, $enclosedByLabel);
-    }
+    public $options = ['class' => ['widget' => 'mb-4']];
 
     /**
-     * @param array $instanceConfig the configuration passed to this instance's constructor
-     * @return array the layout specific default configuration for this instance
+     * @inheritDoc
      */
-    protected function createLayoutConfig($instanceConfig)
+    public $inputOptions = ['class' => ['widget' => 'form-control form-control-lg']];
+
+    /**
+     * @inheritDoc
+     */
+    public $template = "<div class=\"form-outline\">\n{input}\n{label}\n{error}\n{hint}\n</div>";
+
+    /**
+     * @inheritDoc
+     */
+    public $errorOptions = ['class' => 'invalid-feedback'];
+
+    /**
+     * @inheritDoc
+     */
+    protected function createLayoutConfig(array $instanceConfig): array
     {
         $config = [
             'hintOptions' => [
-                'tag' => 'p',
-                'class' => 'help-block',
+                'tag' => 'div',
+                'class' => ['form-text', 'text-muted'],
             ],
             'errorOptions' => [
-                'tag' => 'p',
-                'class' => 'help-block help-block-error',
+                'tag' => 'div',
+                'class' => 'invalid-feedback',
             ],
-            'inputOptions' => [
-                'class' => 'form-control',
+            'labelOptions' => [
+                'class' => ['form-label'],
             ],
         ];
 
         $layout = $instanceConfig['form']->layout;
-
-        if ($layout === 'horizontal') {
-            $config['template'] = "{label}\n{beginWrapper}\n{input}\n<span class='material-input'></span>\n{error}\n{endWrapper}\n{hint}";
+        if ($layout === \yii\bootstrap5\ActiveForm::LAYOUT_HORIZONTAL) {
+            $config['template'] = "{label}\n{beginWrapper}\n{input}\n{error}\n{hint}\n{endWrapper}";
+            $config['wrapperOptions'] = [];
+            $config['labelOptions'] = [];
+            $config['options'] = [];
             $cssClasses = [
-                'offset' => 'col-sm-offset-3',
-                'label' => 'col-sm-2',
+                'offset' => ['col-sm-10', 'offset-sm-2'],
+                'label' => ['col-sm-2', 'col-form-label'],
                 'wrapper' => 'col-sm-10',
                 'error' => '',
-                'hint' => 'col-sm-3',
+                'hint' => '',
+                'field' => 'mb-3 row',
             ];
             if (isset($instanceConfig['horizontalCssClasses'])) {
                 $cssClasses = ArrayHelper::merge($cssClasses, $instanceConfig['horizontalCssClasses']);
             }
             $config['horizontalCssClasses'] = $cssClasses;
-            $config['wrapperOptions'] = ['class' => $cssClasses['wrapper']];
-            $config['labelOptions'] = ['class' => 'control-label ' . $cssClasses['label']];
-            $config['errorOptions'] = ['class' => 'help-block help-block-error ' . $cssClasses['error']];
-            $config['hintOptions'] = ['class' => 'help-block ' . $cssClasses['hint']];
-        } elseif ($layout === 'inline') {
-            $config['labelOptions'] = ['class' => 'sr-only'];
+
+            Html::addCssClass($config['wrapperOptions'], $cssClasses['wrapper']);
+            Html::addCssClass($config['labelOptions'], $cssClasses['label']);
+            Html::addCssClass($config['errorOptions'], $cssClasses['error']);
+            Html::addCssClass($config['hintOptions'], $cssClasses['hint']);
+            Html::addCssClass($config['options'], $cssClasses['field']);
+        } elseif ($layout === \yii\bootstrap5\ActiveForm::LAYOUT_INLINE) {
+            $config['inputOptions']['placeholder'] = true;
             $config['enableError'] = false;
+
+            Html::addCssClass($config['labelOptions'], ['screenreader' => 'visually-hidden']);
+        } elseif ($layout === \yii\bootstrap5\ActiveForm::LAYOUT_FLOATING) {
+            $config['inputOptions']['placeholder'] = true;
+            $config['template'] = "{input}\n{label}\n{error}\n{hint}";
+            Html::addCssClass($config['options'], ['layout' => 'form-floating mt-3']);
         }
 
         return $config;
