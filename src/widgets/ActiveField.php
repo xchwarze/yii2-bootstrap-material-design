@@ -1,16 +1,12 @@
 <?php
 
-namespace exocet\bootstrap5md\widgets\form;
+namespace exocet\bootstrap5md\widgets;
 
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /**
- * ActiveField represents a form input field within an [yii\widgets\ActiveForm](http://www.yiiframework.com/doc-2.0/yii-widgets-activeform.html).
- * @see http://www.yiiframework.com/doc-2.0/yii-widgets-activefield.html
- * @author DSR! <xchwarze@gmail.com>
- * @package widgets
- * @subpackage form
+ * @inheritDoc
  */
 class ActiveField extends \yii\bootstrap5\ActiveField
 {

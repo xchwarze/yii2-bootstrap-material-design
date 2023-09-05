@@ -5,24 +5,7 @@ namespace exocet\bootstrap5md\widgets\grid;
 use yii\helpers\Html;
 
 /**
- * ActionColumn is a column for the [[GridView|GridView]] widget that displays buttons for viewing and manipulating the items.
- *
- * To add an ActionColumn to the grid view, add it to the `$columns` (inherited from [yii\grid\GridView](http://www.yiiframework.com/doc-2.0/yii-grid-gridview.html#$columns-detail)) 
- * configuration as follows:
- *
- * ```php
- * 'columns' => [
- *     // ...
- *     [
- *         'class' => ActionColumn::className(),
- *         // you may configure additional properties here
- *     ],
- * ]
- * ```
- * 
- * @author DSR! <xchwarze@gmail.com>
- * @package widgets
- * @subpackage grid
+ * @inheritDoc
  */
 class ActionColumn extends \yii\grid\ActionColumn
 {
@@ -41,7 +24,7 @@ class ActionColumn extends \yii\grid\ActionColumn
                     'aria-label' => \Yii::t('yii', 'View'),
                     'data-pjax' => '0',
                 ], $this->buttonOptions);
-                
+
                 return Html::a('<i class="mdi mdi-2x mdi-pageview"></i>', $url, $options);
             };
         }
