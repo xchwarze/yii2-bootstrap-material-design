@@ -1,6 +1,6 @@
 # yii2-bootstrap-material-design
 
-Composer package for implementing FezVrasta's new bootstrap material design in Yii2
+Composer package for implementing FezVrasta's new bootstrap material design (MDB 6) in Yii2
 https://github.com/mdbootstrap/mdb-ui-kit
 
 
@@ -10,7 +10,7 @@ The preferred way of installation is through Composer.
 
 ## Usage
 
-To load the MDB CSS files integrate the MaterialAsset into your app.
+To load the MDB CSS and JS files integrate the MaterialAsset into your app.
 Two ways to achieve this is to register the asset in the main layout:
 
 ```php
@@ -27,20 +27,20 @@ or as a dependency in your app wide AppAsset.php
 // @app/assets/AppAsset.php
 
 public $depends = [
-    'exocet\bootstrap5md\MaterialAsset', // include css and js
-    'exocet\bootstrap5md\MaterialIconsAsset', // include icons (optional)
+    // include bootstrap 5 and material
+    'exocet\bootstrap5md\MaterialAsset',
+    
+    // include material icons (optional)
+    'exocet\bootstrap5md\MaterialIconsAsset',
+    
     // more dependencies
+    //...
 ];
 ```
 
 ## Widgets
 
-The following widgets are currently available:
-
-* ActiveField
-* ActiveForm
-* GridView with ActionColumn
-
+This add-on extends Boostrapt 5 by replacing dependencies with MDB dependencies and corrects the way html is generated in certain components to make them the way they are used with MDB.
 
 ## Gii support
 
@@ -56,10 +56,8 @@ $config['modules']['gii'] = [
         'crud' => [
             'class' => 'yii\gii\generators\crud\Generator',
             'templates' => [ // setting templates
-                'material-desing' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design/crud',
-                'material-desing-h' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-h/crud', 
+                'material-design' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design/crud',
                 'material-design-with-icons' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-with-icons/crud',
-                'material-design-h-with-icons' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-h-with-icons/crud'
             ]
         ]
     ],
