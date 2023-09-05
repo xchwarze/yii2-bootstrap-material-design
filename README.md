@@ -7,6 +7,10 @@ https://github.com/mdbootstrap/mdb-ui-kit
 ## Installation
 
 The preferred way of installation is through Composer.
+```bash
+composer install exocet/yii2-bootstrap-material-design
+```
+
 
 ## Usage
 
@@ -40,7 +44,9 @@ public $depends = [
 
 ## Widgets
 
-This add-on extends Boostrapt 5 by replacing dependencies with MDB dependencies and corrects the way html is generated in certain components to make them the way they are used with MDB.
+This add-on extends Bootstrap 5 by replacing dependencies with MDB dependencies and corrects the way html is generated in certain components to make them the way they are used with MDB.
+
+It is probably best to use it in combination with https://github.com/kartik-v/yii2-widgets
 
 ## Gii support
 
@@ -56,8 +62,8 @@ $config['modules']['gii'] = [
         'crud' => [
             'class' => 'yii\gii\generators\crud\Generator',
             'templates' => [ // setting templates
-                'material-design' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design/crud',
-                'material-design-with-icons' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-with-icons/crud',
+                'material-bootstrap' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design/crud',
+                'material-bootstrap-with-icons' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-with-icons/crud',
             ]
         ]
     ],
