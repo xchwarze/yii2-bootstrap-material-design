@@ -1,37 +1,27 @@
 # yii2-bootstrap-material-design
 
-Composer package for implementing FezVrasta's bootstrap material design in Yii2
-https://github.com/FezVrasta/bootstrap-material-design
+Composer package for implementing FezVrasta's new bootstrap material design (MDB 6) in Yii2
+https://github.com/mdbootstrap/mdb-ui-kit
 
 
 ## Installation
 
 The preferred way of installation is through Composer.
-If you don't have Composer you can get it here: https://getcomposer.org/
-
-You also should install the Composer Asset Plugin to handle NPM and Bower assets:
-```
-$ composer global require "fxp/composer-asset-plugin:~1.2"
+```bash
+composer install exocet/yii2-bootstrap-material-design
 ```
 
-To install the package add the following to the ```require``` section of your composer.json:
-```
-"require": {
-    "exocet/yii2-bootstrap-material-design": "*"
-},
-```
 
 ## Usage
 
-To load the Materialize CSS files integrate the MaterializeAsset into your app.
+To load the MDB CSS and JS files integrate the MaterialAsset into your app.
 Two ways to achieve this is to register the asset in the main layout:
 
 ```php
 // @app/views/layouts/main.php
 
-\exocet\BootstrapMD\MaterialAsset::register($this); // include css and js
-\exocet\BootstrapMD\MaterialIconsAsset::register($this); // include icons (optional)
-\exocet\BootstrapMD\MaterialInitAsset::register($this); // add $.material.init(); js (optional)
+\exocet\bootstrap5md\MaterialAsset::register($this); // include css and js
+\exocet\bootstrap5md\MaterialIconsAsset::register($this); // include icons (optional)
 // further code
 ```
 
@@ -41,21 +31,22 @@ or as a dependency in your app wide AppAsset.php
 // @app/assets/AppAsset.php
 
 public $depends = [
-    'exocet\BootstrapMD\MaterialAsset', // include css and js
-    'exocet\BootstrapMD\MaterialIconsAsset', // include icons (optional)
-    'exocet\BootstrapMD\MaterialInitAsset', // add $.material.init(); js (optional)
+    // include bootstrap 5 and material
+    'exocet\bootstrap5md\MaterialAsset',
+    
+    // include material icons (optional)
+    'exocet\bootstrap5md\MaterialIconsAsset',
+    
     // more dependencies
+    //...
 ];
 ```
 
 ## Widgets
 
-The following widgets are currently available:
+This add-on extends Bootstrap 5 by replacing dependencies with MDB dependencies and corrects the way html is generated in certain components to make them the way they are used with MDB.
 
-* ActiveField
-* ActiveForm
-* GridView with ActionColumn
-
+It is probably best to use it in combination with https://github.com/kartik-v/yii2-widgets
 
 ## Gii support
 
@@ -71,10 +62,8 @@ $config['modules']['gii'] = [
         'crud' => [
             'class' => 'yii\gii\generators\crud\Generator',
             'templates' => [ // setting templates
-                'material-desing' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design/crud',
-                'material-desing-h' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-h/crud', 
-                'material-design-with-icons' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-with-icons/crud',
-                'material-design-h-with-icons' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-h-with-icons/crud'
+                'material-bootstrap' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design/crud',
+                'material-bootstrap-with-icons' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-with-icons/crud',
             ]
         ]
     ],
