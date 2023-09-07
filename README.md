@@ -62,7 +62,7 @@ $config['modules']['gii'] = [
         'crud' => [
             'class' => 'yii\gii\generators\crud\Generator',
             'templates' => [
-                'material-bootstrap' => '@vendor/exocet/yii2-bootstrap-material-design/generators/crud',
+                'material-bootstrap' => '@vendor/exocet/yii2-bootstrap-material-design/src/generators/crud',
             ]
         ]
     ],
