@@ -3,22 +3,25 @@
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
 
-/* @var $this yii\web\View */
-/* @var $generator yii\gii\generators\crud\Generator */
+/** @var yii\web\View $this */
+/** @var yii\gii\generators\crud\Generator $generator */
 
-$urlParams = $generator->generateUrlParams();
-$nameAttribute = $generator->getNameAttribute();
+$modelClass = StringHelper::basename($generator->modelClass);
 
 echo "<?php\n";
 ?>
 
+use <?= $generator->modelClass ?>;
 use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\grid\ActionColumn;
+//use exocet\bootstrap5md\widgets\grid\ActionColumn; // for material icons use this
 use <?= $generator->indexWidgetType === 'grid' ? "exocet\\bootstrap5md\\widgets\\grid\\GridView" : "yii\\widgets\\ListView" ?>;
 <?= $generator->enablePjax ? 'use yii\widgets\Pjax;' : '' ?>
 
-/* @var $this yii\web\View */
-<?= !empty($generator->searchModelClass) ? "/* @var \$searchModel " . ltrim($generator->searchModelClass, '\\') . " */\n" : '' ?>
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/** @var yii\web\View $this */
+<?= !empty($generator->searchModelClass) ? "/** @var " . ltrim($generator->searchModelClass, '\\') . " \$searchModel */\n" : '' ?>
+/** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = <?= $generator->generateString(Inflector::pluralize(Inflector::camel2words(StringHelper::basename($generator->modelClass)))) ?>;
 $this->params['breadcrumbs'][] = $this->title;
@@ -30,13 +33,18 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= "    <?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
 <?php endif; ?>
 
-    <div class="form-group pull-right">
+    <div class="form-group pull-right mt-5 mb-4">
         <?= "<?= " ?>Html::a(<?= $generator->generateString('Create ' . Inflector::camel2words(StringHelper::basename($generator->modelClass))) ?>, ['create'], ['class' => 'btn btn-raised btn-success']) ?>
     </div>
+
 <?= $generator->enablePjax ? '<?php Pjax::begin(); ?>' : '' ?>
+
 <?php if ($generator->indexWidgetType === 'grid'): ?>
     <?= "<?= " ?>GridView::widget([
         'dataProvider' => $dataProvider,
+        'headerRowOptions' => [
+            'class' => 'bg-light',
+        ],
         <?= !empty($generator->searchModelClass) ? "'filterModel' => \$searchModel,\n        'columns' => [\n" : "'columns' => [\n"; ?>
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -47,7 +55,7 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
         if (++$count < 6) {
             echo "            '" . $name . "',\n";
         } else {
-            echo "            // '" . $name . "',\n";
+            echo "            //'" . $name . "',\n";
         }
     }
 } else {
@@ -56,13 +64,17 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
         if (++$count < 6) {
             echo "            '" . $column->name . ($format === 'text' ? "" : ":" . $format) . "',\n";
         } else {
-            echo "            // '" . $column->name . ($format === 'text' ? "" : ":" . $format) . "',\n";
+            echo "            //'" . $column->name . ($format === 'text' ? "" : ":" . $format) . "',\n";
         }
     }
 }
 ?>
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => ActionColumn::className(),
+                'urlCreator' => function ($action, <?= $modelClass ?> $model, $key, $index, $column) {
+                    return Url::toRoute([$action, <?= $generator->generateUrlParams() ?>]);
+                 }
+            ],
         ],
     ]); ?>
 <?php else: ?>
@@ -70,9 +82,11 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
         'dataProvider' => $dataProvider,
         'itemOptions' => ['class' => 'item'],
         'itemView' => function ($model, $key, $index, $widget) {
-            return Html::a(Html::encode($model-><?= $nameAttribute ?>), ['view', <?= $urlParams ?>]);
+            return Html::a(Html::encode($model-><?= $generator->getNameAttribute() ?>), ['view', <?= $generator->generateUrlParams() ?>]);
         },
     ]) ?>
 <?php endif; ?>
-<?= $generator->enablePjax ? '<?php Pjax::end(); ?>' : '' ?>
+
+<?= $generator->enablePjax ? "    <?php Pjax::end(); ?>\n" : '' ?>
+
 </div>

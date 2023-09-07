@@ -57,13 +57,12 @@ If you are creating your CRUD controller and view files using Gii you can get ma
 
 $config['modules']['gii'] = [
     'class' => 'yii\gii\Module',      
-    'allowedIPs' => ['127.0.0.1', '::1', '192.168.0.*', '192.168.178.20'],  
+    'allowedIPs' => ['127.0.0.1', '::1'],  
     'generators' => [
         'crud' => [
             'class' => 'yii\gii\generators\crud\Generator',
-            'templates' => [ // setting templates
-                'material-bootstrap' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design/crud',
-                'material-bootstrap-with-icons' => '@vendor/exocet/yii2-bootstrap-material-design/generators/material-design-with-icons/crud',
+            'templates' => [
+                'material-bootstrap' => '@vendor/exocet/yii2-bootstrap-material-design/generators/crud',
             ]
         ]
     ],

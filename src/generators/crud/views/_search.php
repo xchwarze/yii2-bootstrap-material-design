@@ -3,8 +3,8 @@
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
 
-/* @var $this yii\web\View */
-/* @var $generator yii\gii\generators\crud\Generator */
+/** @var yii\web\View $this */
+/** @var yii\gii\generators\crud\Generator $generator */
 
 echo "<?php\n";
 ?>
@@ -12,9 +12,9 @@ echo "<?php\n";
 use yii\helpers\Html;
 use exocet\bootstrap5md\widgets\form\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model <?= ltrim($generator->searchModelClass, '\\') ?> */
-/* @var $form exocet\bootstrap5md\widgets\form\ActiveForm */
+/** @var yii\web\View $this */
+/** @var <?= ltrim($generator->searchModelClass, '\\') ?> $model */
+/** @var yii\widgets\ActiveForm $form */
 ?>
 
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-search">
@@ -22,6 +22,11 @@ use exocet\bootstrap5md\widgets\form\ActiveForm;
     <?= "<?php " ?>$form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
+<?php if ($generator->enablePjax): ?>
+        'options' => [
+            'data-pjax' => 1
+        ],
+<?php endif; ?>
     ]); ?>
 
 <?php
@@ -35,8 +40,8 @@ foreach ($generator->getColumnNames() as $attribute) {
 }
 ?>
     <div class="form-group">
-        <?= "<?= " ?>Html::submitButton(<?= $generator->generateString('Search') ?>, ['class' => 'btn btn-raised btn-primary']) ?>
-        <?= "<?= " ?>Html::resetButton(<?= $generator->generateString('Reset') ?>, ['class' => 'btn btn-raised btn-default']) ?>
+        <?= "<?= " ?>Html::submitButton(<?= $generator->generateString('Search') ?>, ['class' => 'btn btn-primary']) ?>
+        <?= "<?= " ?>Html::resetButton(<?= $generator->generateString('Reset') ?>, ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?= "<?php " ?>ActiveForm::end(); ?>

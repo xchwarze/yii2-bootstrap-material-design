@@ -3,8 +3,8 @@
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
 
-/* @var $this yii\web\View */
-/* @var $generator yii\gii\generators\crud\Generator */
+/** @var yii\web\View $this */
+/** @var yii\gii\generators\crud\Generator $generator */
 
 /* @var $model \yii\db\ActiveRecord */
 $model = new $generator->modelClass();
@@ -19,12 +19,12 @@ echo "<?php\n";
 use yii\helpers\Html;
 use exocet\bootstrap5md\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model <?= ltrim($generator->modelClass, '\\') ?> */
-/* @var $form exocet\bootstrap5md\widgets\ActiveForm */
+/** @var yii\web\View $this */
+/** @var <?= ltrim($generator->modelClass, '\\') ?> $model */
+/** @var exocet\bootstrap5md\widgets\ActiveForm $form */
 ?>
 
-<div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-form">
+<div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-form mt-5">
 
     <?= "<?php " ?>$form = ActiveForm::begin(/*['layout' => ActiveForm::LAYOUT_HORIZONTAL]*/); ?>
 
@@ -34,7 +34,7 @@ use exocet\bootstrap5md\widgets\ActiveForm;
     }
 } ?>
     <div class="form-group pull-right">
-        <?= "<?= " ?>Html::submitButton($model->isNewRecord ? <?= $generator->generateString('Create') ?> : <?= $generator->generateString('Update') ?>, ['class' => $model->isNewRecord ? 'btn btn-raised btn-success' : 'btn btn-raised btn-primary']) ?>
+        <?= "<?= " ?>Html::submitButton(<?= $generator->generateString('Save') ?>, ['class' => 'btn btn-success']) ?>
     </div>
 
     <?= "<?php " ?>ActiveForm::end(); ?>
