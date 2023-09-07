@@ -13,7 +13,7 @@ class ActiveField extends \yii\bootstrap5\ActiveField
     /**
      * @inheritDoc
      */
-    public $options = ['class' => ['widget' => 'mb-4']];
+    public $options = ['class' => ['widget' => 'form-item mb-4']];
 
     /**
      * @inheritDoc
