@@ -80,8 +80,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         ]);
 <?php else: ?>
         $dataProvider = new ActiveDataProvider([
-            //'query' => <?= $modelClass ?>::find(),
-            'query' => <?= $modelClass ?>::find()->where(['deleted_at' => null]),
+            'query' => <?= $modelClass ?>::find(),
             /*
             'pagination' => [
                 'pageSize' => 50
@@ -182,7 +181,6 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     {
 <?php
 $condition = [];
-$condition[] = "'deleted_at' => null";
 foreach ($pks as $pk) {
     $condition[] = "'$pk' => \$$pk";
 }
