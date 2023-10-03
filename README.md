@@ -20,8 +20,8 @@ Two ways to achieve this is to register the asset in the main layout:
 ```php
 // @app/views/layouts/main.php
 
-\exocet\bootstrap5md\MaterialAsset::register($this); // include css and js
-\exocet\bootstrap5md\MaterialIconsAsset::register($this); // include icons (optional)
+\exocet\bootstrap5md\MaterialComplatibleAsset::register($this); // include css and js
+\exocet\bootstrap5md\FontawesomeAsset::register($this); // include icons (optional)
 // further code
 ```
 
@@ -31,9 +31,12 @@ or as a dependency in your app wide AppAsset.php
 // @app/assets/AppAsset.php
 
 public $depends = [
-    // include bootstrap 5 and material
-    'exocet\bootstrap5md\MaterialAsset',
+    // include mdb and bootstrap 5 compatibility
+    'exocet\bootstrap5md\MaterialComplatibleAsset',
     
+    // include Fontawesome icons (optional)
+    'exocet\bootstrap5md\FontawesomeAsset',
+
     // include material icons (optional)
     'exocet\bootstrap5md\MaterialIconsAsset',
     
@@ -45,6 +48,24 @@ public $depends = [
 ## Widgets
 
 This add-on extends Bootstrap 5 by replacing dependencies with MDB dependencies and corrects the way html is generated in certain components to make them the way they are used with MDB.
+
+For this we must overwrite the original AssetBundle as follows
+
+
+```php
+// @app/config/web.php
+'components' => [
+    'assetManager' => [
+        'bundles' => [
+            'yii\bootstrap5\BootstrapAsset' => [
+                'class' => \exocet\bootstrap5md\BootstrapAsset::class,
+            ],
+            'yii\bootstrap5\BootstrapPluginAsset' => [
+                'class' => \exocet\bootstrap5md\BootstrapPluginAsset::class,
+            ],
+        ],
+    ],
+```
 
 It is probably best to use it in combination with https://github.com/kartik-v/yii2-widgets
 

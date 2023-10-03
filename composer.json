@@ -4,7 +4,7 @@
   "keywords": [
     "yii", "yii2", "bootstrap", "material"
   ],
-  "version": "2.1.0",
+  "version": "2.2.0",
   "type": "yii2-extension",
   "license": "MIT",
   "support": {
@@ -21,8 +21,9 @@
   "require": {
     "yiisoft/yii2": "~2.0.10",
     "yiisoft/yii2-bootstrap5": "~2.0.4",
+    "npm-asset/mdb-ui-kit": "^6.4",
     "npm-asset/mervick--mdi-icons": "^4.0",
-    "npm-asset/mdb-ui-kit": "^6.4"
+    "npm-asset/fortawesome--fontawesome-free": "^6.4"
   },
   "repositories": [
     {
