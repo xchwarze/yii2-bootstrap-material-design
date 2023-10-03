@@ -31,8 +31,8 @@ class MaterialAsset extends \yii\web\AssetBundle
     public function init()
     {
         // disable original bootstrap 5 assets
-        Yii::$app->assetManager->bundles['yii\bootstrap5\BootstrapAsset'] = false;
-        Yii::$app->assetManager->bundles['yii\bootstrap5\BootstrapPluginAsset'] = false;
+        //Yii::$app->assetManager->bundles['yii\bootstrap5\BootstrapAsset'] = false;
+        //Yii::$app->assetManager->bundles['yii\bootstrap5\BootstrapPluginAsset'] = false;
 
         parent::init();
     }

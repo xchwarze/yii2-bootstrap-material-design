@@ -2,6 +2,8 @@
 
 namespace exocet\bootstrap5md;
 
+use yii\web\View;
+
 class BootstrapPluginAsset extends \yii\web\AssetBundle
 {
     /**
