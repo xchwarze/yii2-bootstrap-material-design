@@ -2,7 +2,7 @@
 
 namespace exocet\bootstrap5md;
 
-class MaterialComplatibleAsset extends MaterialAsset
+class MaterialCompatibleAsset extends MaterialAsset
 {
     /**
      * @inheritDoc

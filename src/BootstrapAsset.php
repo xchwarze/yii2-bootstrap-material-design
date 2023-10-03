@@ -17,5 +17,5 @@ class BootstrapAsset extends \yii\web\AssetBundle
     /**
      * @inheritDoc
      */
-    public $css = [];
+    public $js = [];
 }

@@ -20,7 +20,7 @@ Two ways to achieve this is to register the asset in the main layout:
 ```php
 // @app/views/layouts/main.php
 
-\exocet\bootstrap5md\MaterialComplatibleAsset::register($this); // include css and js
+\exocet\bootstrap5md\MaterialCompatibleAsset::register($this); // include css and js
 \exocet\bootstrap5md\FontawesomeAsset::register($this); // include icons (optional)
 // further code
 ```
@@ -32,7 +32,7 @@ or as a dependency in your app wide AppAsset.php
 
 public $depends = [
     // include mdb and bootstrap 5 compatibility
-    'exocet\bootstrap5md\MaterialComplatibleAsset',
+    'exocet\bootstrap5md\MaterialCompatibleAsset',
     
     // include Fontawesome icons (optional)
     'exocet\bootstrap5md\FontawesomeAsset',
