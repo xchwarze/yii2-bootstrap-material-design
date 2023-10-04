@@ -23,12 +23,30 @@ class ActiveField extends \yii\bootstrap5\ActiveField
     /**
      * @inheritDoc
      */
-    public $template = "<div class=\"form-outline\">\n{input}\n{label}\n{error}\n{hint}\n</div>";
+    public $inputDefaultTemplate = "<div class=\"form-outline\">\n{input}\n{label}\n{error}\n{hint}\n</div>";
 
     /**
      * @inheritDoc
      */
     public $errorOptions = ['class' => 'invalid-feedback'];
+
+    /**
+     * Adjusts the input template based on the provided options.
+     *
+     * If no template is specified in the options, the default template is used.
+     * Otherwise, the template specified in the options is used.
+     *
+     * @param array $options The options where a template might be specified.
+     * @return void
+     */
+    protected function fixInputTemplate($options)
+    {
+        if (!isset($options['template'])) {
+            $this->template = $this->inputDefaultTemplate;
+        } else {
+            $this->template = $options['template'];
+        }
+    }
 
     /**
      * @inheritDoc
@@ -85,5 +103,45 @@ class ActiveField extends \yii\bootstrap5\ActiveField
         }
 
         return $config;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function input($type, $options = [])
+    {
+        $this->fixInputTemplate($options);
+
+        return parent::input($options);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function textInput($options = [])
+    {
+        $this->fixInputTemplate($options);
+
+        return parent::textInput($options);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function passwordInput($options = [])
+    {
+        $this->fixInputTemplate($options);
+
+        return parent::passwordInput($options);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function textarea($options = [])
+    {
+        $this->fixInputTemplate($options);
+
+        return parent::textarea($options);
     }
 }
