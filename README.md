@@ -20,7 +20,7 @@ Two ways to achieve this is to register the asset in the main layout:
 ```php
 // @app/views/layouts/main.php
 
-\exocet\bootstrap5md\MaterialCompatibleAsset::register($this); // include css and js
+\exocet\bootstrap5md\MaterialAsset::register($this); // include css and js
 \exocet\bootstrap5md\FontawesomeAsset::register($this); // include icons (optional)
 // further code
 ```
@@ -31,8 +31,8 @@ or as a dependency in your app wide AppAsset.php
 // @app/assets/AppAsset.php
 
 public $depends = [
-    // include mdb and bootstrap 5 compatibility
-    'exocet\bootstrap5md\MaterialCompatibleAsset',
+    // include mdb assets
+    'exocet\bootstrap5md\MaterialAsset',
     
     // include Fontawesome icons (optional)
     'exocet\bootstrap5md\FontawesomeAsset',
@@ -43,6 +43,18 @@ public $depends = [
     // more dependencies
     //...
 ];
+```
+
+In order for it to work properly, the files must be patched to accept the settings in the same way as the original Bootstrap does. So we have to add this in our `composer.json` so that it is always done automatically.
+```json
+    "scripts": {
+        "post-install-cmd": [
+            "@composer run-script post-install-cmd --working-dir=vendor/exocet/yii2-bootstrap-material-design"
+        ],
+        "post-update-cmd": [
+            "@composer run-script post-update-cmd --working-dir=vendor/exocet/yii2-bootstrap-material-design"
+        ]
+    }
 ```
 
 ## Widgets
