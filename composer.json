@@ -34,11 +34,11 @@
   "autoload": {
     "psr-4": {
       "exocet\\bootstrap5md\\": "src",
-      "exocet\\helper\\": "bin"
+      "exocet\\composer\\": "composer"
     }
   },
   "scripts": {
-    "post-install-cmd": "exocet\\helper\\LauncherClass::postInstall",
-    "post-update-cmd": "exocet\\helper\\LauncherClass::postUpdate"
+    "post-install-cmd": "exocet\\composer\\LauncherClass::postInstall",
+    "post-update-cmd": "exocet\\composer\\LauncherClass::postUpdate"
   }
 }
