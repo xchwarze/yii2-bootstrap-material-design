@@ -22,7 +22,7 @@ class MaterialAsset extends \yii\web\AssetBundle
      * @inheritDoc
      */
     public $js = [
-        'js/mdb.min.js',
+        'js/mdb.umd.min.js',
     ];
 
     /**
