@@ -10,7 +10,7 @@ if (file_exists($filePath)) {
     $content = str_replace('data-mdb-', 'data-bs-', file_get_contents($filePath));
     file_put_contents($filePath, $content);
 
-    echo "Modifications applied successfully.\n";
+    echo "Modifications applied successfully.\n\n";
 }
 
 $filePath = __DIR__ . '/../../../npm-asset/mdb-ui-kit/js/mdb.umd.min.js';
@@ -20,46 +20,46 @@ if (file_exists($filePath)) {
     $content = str_replace('data-mdb-', 'data-bs-', file_get_contents($filePath));
     file_put_contents($filePath, $content);
 
-    echo "Modifications applied successfully.\n";
+    echo "Modifications applied successfully.\n\n";
 }
 
 /* css changes... */
-$filePath = __DIR__ . '/../../../npm-asset/mdb-ui-kit/css/mdb.dark.min.css'
+$filePath = __DIR__ . '/../../../npm-asset/mdb-ui-kit/css/mdb.dark.min.css';
 if (file_exists($filePath)) {
     echo "File found: css/mdb.dark.min.css\n";
 
     $content = str_replace('data-mdb-', 'data-bs-', file_get_contents($filePath));
     file_put_contents($filePath, $content);
 
-    echo "Modifications applied successfully.\n";
+    echo "Modifications applied successfully.\n\n";
 }
 
-$filePath = __DIR__ . '/../../../npm-asset/mdb-ui-kit/css/mdb.dark.rtl.min.css'
+$filePath = __DIR__ . '/../../../npm-asset/mdb-ui-kit/css/mdb.dark.rtl.min.css';
 if (file_exists($filePath)) {
     echo "File found: css/mdb.dark.rtl.min.css\n";
 
     $content = str_replace('data-mdb-', 'data-bs-', file_get_contents($filePath));
     file_put_contents($filePath, $content);
 
-    echo "Modifications applied successfully.\n";
+    echo "Modifications applied successfully.\n\n";
 }
 
-$filePath = __DIR__ . '/../../../npm-asset/mdb-ui-kit/css/mdb.min.css'
+$filePath = __DIR__ . '/../../../npm-asset/mdb-ui-kit/css/mdb.min.css';
 if (file_exists($filePath)) {
     echo "File found: css/mdb.min.css\n";
 
     $content = str_replace('data-mdb-', 'data-bs-', file_get_contents($filePath));
     file_put_contents($filePath, $content);
 
-    echo "Modifications applied successfully.\n";
+    echo "Modifications applied successfully.\n\n";
 }
 
-$filePath = __DIR__ . '/../../../npm-asset/mdb-ui-kit/css/mdb.rtl.min.css'
+$filePath = __DIR__ . '/../../../npm-asset/mdb-ui-kit/css/mdb.rtl.min.css';
 if (file_exists($filePath)) {
     echo "File found: css/mdb.rtl.min.css\n";
 
     $content = str_replace('data-mdb-', 'data-bs-', file_get_contents($filePath));
     file_put_contents($filePath, $content);
 
-    echo "Modifications applied successfully.\n";
+    echo "Modifications applied successfully.\n\n";
 }
