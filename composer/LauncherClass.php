@@ -20,7 +20,9 @@ class LauncherClass
     {
         echo "Modifying files in dependency 'MDB UI Kit' to ensure compatibility with 'Yii2 Bootstrap 5'.\n";
 
-        self::modifyFile('js/mdb.min.js');
+        self::modifyFile('js/mdb.es.min.js');
+        self::modifyFile('js/mdb.umd.min.js');
+
         self::modifyFile('css/mdb.dark.min.css');
         self::modifyFile('css/mdb.dark.rtl.min.css');
         self::modifyFile('css/mdb.min.css');
