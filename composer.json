@@ -33,11 +33,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "exocet\\bootstrap5md\\": "src"
+      "exocet\\bootstrap5md\\": "src",
+      "exocet\\helper\\": "bin"
     }
   },
   "scripts": {
-    "post-install-cmd": "php vendor/exocet/yii2-bootstrap-material-design/bin/MaterialCompatiblePatch.php",
-    "post-update-cmd": "php vendor/exocet/yii2-bootstrap-material-design/bin/MaterialCompatiblePatch.php"
+    "post-install-cmd": "exocet\\helper\\LauncherClass::postInstall",
+    "post-update-cmd": "exocet\\helper\\LauncherClass::postUpdate"
   }
 }
