@@ -10,7 +10,7 @@ echo "<?php\n";
 ?>
 
 use yii\helpers\Html;
-use exocet\bootstrap5md\widgets\form\ActiveForm;
+use exocet\bootstrap5md\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
 /** @var <?= ltrim($generator->searchModelClass, '\\') ?> $model */
